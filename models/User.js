@@ -1,6 +1,18 @@
 import mongoose from 'mongoose';
 const { ObjectId } = mongoose.Schema;
-
+const messageSchema = new mongoose.Schema({
+    reviewBy: {
+      type: ObjectId,
+      ref: "User",
+      required: true,
+    },
+    texte:{
+        type: String,
+        require: ""
+    }
+  },{
+    timestamps: true,
+  });
  const userSchema = new mongoose.Schema({
     name:{
         type: String,
@@ -32,6 +44,16 @@ const { ObjectId } = mongoose.Schema;
         type: String,
         default: ""
     },
+    groupe:[{
+        description :{type: String,
+         default: ""
+     },
+     member:{
+         type: Number,
+         default:""
+     },
+ 
+     }],
     address:[{
         firstName:{
             type: String,

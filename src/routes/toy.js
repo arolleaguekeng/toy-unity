@@ -1,10 +1,11 @@
 const express = require ('express');
 const { requireLogin,adminMiddleware } = require('../middleware/index');
-const { addCategory, getCategory } = require('../controllers/category');
+const { createToy, getToyBySlug} = require('../controllers/toy');
+const multer = require('multer') 
 const router = express.Router();
-const shortid = require('shortid'); 
-const path = require('path');
-const multer = require('multer');
+const shortid = require('shortid')
+const path = require('path')
+const Toy = require("../models/Toy");
 
 const  storage  =  multer.diskStorage ( { 
     destination : function  ( req ,  file ,  cb )  { 
@@ -19,7 +20,8 @@ const upload = multer({storage})
 
 
 
-router.post('/category/create', requireLogin,adminMiddleware,upload.single('categoryImage'),addCategory)
-router.get('/category/getcategory', getCategory)
+router.post('/toy/create', requireLogin,adminMiddleware,upload.array("toyPicture"),createToy)
+router.get('/toy/:slug', getToyBySlug)
+//router.get('/toy/', getCategory)
 
 module.exports = router;

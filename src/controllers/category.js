@@ -1,7 +1,7 @@
 const Category = require ('../models/category')
 const slugify = require("slugify");
 const shortid = require("shortid");
-const API = "http://localhost:2500"
+const API = "http://localhost:3000"
 
 function createCategories(categories, parentId = null){
     const categoryList = []

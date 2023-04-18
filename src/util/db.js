@@ -1,6 +1,7 @@
 
 const mongoose = require ('mongoose')
 const connection = {}
+require('dotenv').config()
 
 async function connectDb(){
     if(connection.isConnected){
@@ -26,7 +27,7 @@ async function connectDb(){
 
 async function disconnectDb(){
     if(connection.isConnected){
-        if(process.env.NODE_END === 'production'){
+        if(process.env.NODE_END === 'toyion'){
             await mongoose.disconnect();
                 connection.isConnected = false;  
         }else{
@@ -36,4 +37,4 @@ async function disconnectDb(){
 }
 const db = {connectDb, disconnectDb}
 
-export default db
+module.exports = db;

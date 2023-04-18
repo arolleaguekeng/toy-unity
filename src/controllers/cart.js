@@ -7,12 +7,12 @@ exports.addToCart = (req, res) => {
     if (cart) {
       /**----------- SI LES PANIER EXISTE DEJA METTRE A JOUR POUR AJOUTER DES ARTICLE ----------- */
 
-      const product = req.body.cartItems.product;
-      const isItem = cart.cartItems.find((c) => c.product == product);
+      const toy = req.body.cartItems.toy;
+      const isItem = cart.cartItems.find((c) => c.toy == toy);
       let condition, update;
 
       if (isItem) {
-        condition = {"user": req.user._id, "cartItems.product":product};
+        condition = {"user": req.user._id, "cartItems.toy":toy};
         update = {
           "$set": {
             "cartItems.$": {

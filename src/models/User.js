@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose')
 const { ObjectId } = mongoose.Schema;
 const messageSchema = new mongoose.Schema({
     reviewBy: {
@@ -87,9 +87,9 @@ const messageSchema = new mongoose.Schema({
     }],
     wishlist: [
         {
-          product: {
+          toy: {
             type: ObjectId,
-            ref: "Product",
+            ref: "Toy",
           },
           style: {
             type: String,
@@ -102,4 +102,4 @@ const messageSchema = new mongoose.Schema({
  }
  );
  const User = mongoose.models.User || mongoose.model('User', userSchema);
- export default User;
+ module.exports =  User;

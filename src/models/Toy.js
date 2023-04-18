@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose')
 const { ObjectId } = mongoose.Schema;
 const reviewSchema = new mongoose.Schema({
   reviewBy: {
@@ -97,7 +97,7 @@ const toySchema = new mongoose.Schema(
     timestamps: true,
   }
 );
-const Product =
-  mongoose.models.Product || mongoose.model("Product", productSchema);
+const Toy =
+  mongoose.models.Toy || mongoose.model("Toy", toySchema);
 
-export default Product;
+module.exports =  Toy;

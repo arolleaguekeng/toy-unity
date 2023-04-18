@@ -1,6 +1,6 @@
 const express = require ('express');
 const { requireLogin,userMiddleware } = require('../middleware/index');
-const { addToCart } = require('../controller/cart');
+const { addToCart } = require('../controllers/cart');
 const router = express.Router();
 
 

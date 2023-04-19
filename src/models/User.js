@@ -2,104 +2,32 @@ const mongoose = require('mongoose')
 const { ObjectId } = mongoose.Schema;
 const messageSchema = new mongoose.Schema({
     reviewBy: {
-      type: ObjectId,
-      ref: "User",
-      required: true,
+        type: ObjectId,
+        ref: "User",
+        required: true,
     },
-    texte:{
+    texte: {
         type: String,
         require: ""
     }
-  },{
+}, {
     timestamps: true,
-  });
- const userSchema = new mongoose.Schema({
-    name:{
-        type: String,
-        required:"Please enter you name"
-    },
-    email:{
-        type: String,
-        required : "Please enter your email",
-        trim: true,
-        unique: true,
-    },
-    password:{
-        type: String,
-        required: true
-    },
-    role:{
-        type: String,
-        default: "user",
-    },
-    image:{
-        type: String,
-        default:"https://cdn-icons-png.flaticon.com/512/149/149071.png",
-    },
-    emailVerified:{
-        type: Boolean,
-        default: false,
-    },
-    defaultPaymentMethod:{
-        type: String,
-        default: ""
-    },
-    groupe:[{
-        description :{type: String,
-         default: ""
-     },
-     member:{
-         type: Number,
-         default:""
-     },
- 
-     }],
-    address:[{
-        firstName:{
-            type: String,
-        },
-        lastName:{
-            type: String,
-        },
-        phoneNumber1:{
-            type: String,
-        },
-        phoneNumber2:{
-            type: String,
-        },
-        address1:{
-            type: String,
-        },
-        city:{
-            type: String,
-        },
-        state:{
-            type: String,
-        },
-        country:{
-            type: String,
-        },
-        active:{
-            type: Boolean,
-            default: false,
-        },
+});
 
-    }],
-    wishlist: [
-        {
-          toy: {
-            type: ObjectId,
-            ref: "Toy",
-          },
-          style: {
-            type: String,
-          },
-        },
-      ],
- },
- {
-    timestamps: true,
- }
- );
- const User = mongoose.models.User || mongoose.model('User', userSchema);
- module.exports =  User;
+
+
+const userSchema = new mongoose.Schema({
+    fullName: { type: String, required: true },
+    username: { type: String, required: true, unique: true },
+    email: { type: String, required: true, unique: true },
+    hash_password: { type: String, required: true },
+    phone: { type: String },
+    role: { type: String, enum: ['user', 'admin'], default: 'user' },
+    image: { type: String },
+    emailVerified: { type: Boolean, default: false },
+    city: { type: String },
+    state: { type: String },
+    country: { type: String }
+}, { timestamps: true });
+
+module.exports = mongoose.model('User', userSchema);

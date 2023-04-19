@@ -1,24 +1,24 @@
 const { check, validationResult } = require('express-validator')
 
 exports.validateRequest = [ 
-    check('firstName')
-    .notEmpty()
-    .withMessage('firstName is required'),
-    check('lastName')
-    .notEmpty()
-    .withMessage('lasttName is required'),
-    check('userVille')
-    .notEmpty()
-    .withMessage('userVille is required'),
-    check('contactNumber')
-    .matches(/\+?237?\s*\(?-*\.*(\d{3})\)?\.*-*\s*(\d{3})\.*-*\s*(\d{3})$/)
-    .withMessage('contactNumber is required'),
-    check('email')
-    .matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, "please fill a valid email adress")
-    .withMessage('email is required'),
-    check('password')
-    .isLength({min: 6})
-    .withMessage('password is required'), 
+    // check('fullName')
+    // .notEmpty()
+    // .withMessage('fullName is required'),
+    // check('username')
+    // .notEmpty()
+    // .withMessage('username is required'),
+    // check('email')
+    // .notEmpty()
+    // .withMessage('email is required'),
+    // check('phone')
+    // .matches(/\+?237?\s*\(?-*\.*(\d{3})\)?\.*-*\s*(\d{3})\.*-*\s*(\d{3})$/)
+    // .withMessage('phone is required'),
+    // check('email')
+    // .matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, "please fill a valid email adress")
+    // .withMessage('email is required'),
+    // check('password')
+    // .isLength({min: 6})
+    // .withMessage('password is required'), 
 ]
 
 exports.validationLoginRequest = [

@@ -6,7 +6,7 @@ const router = express.Router();
 
 
 router.post('/login',  validationLoginRequest,isRequestValideted, login);
-router.post('/signup', validateRequest,isRequestValideted, signup);
+router.post('/signup', signup);
 
 
 

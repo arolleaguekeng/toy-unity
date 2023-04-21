@@ -24,7 +24,6 @@ const userSchema = new mongoose.Schema({
     phone: { type: String },
     role: { type: String, enum: ['user', 'admin'], default: 'user' },
     image: { type: String },
-    emailVerified: { type: Boolean, default: false },
     city: { type: String },
     state: { type: String },
     country: { type: String }

@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 
-router.post('/operation/get',  getOperation);
+router.get('/operation/get',  getOperation);
 router.post('/operation/add', addOperation); 
 
 

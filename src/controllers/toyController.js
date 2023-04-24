@@ -43,13 +43,11 @@ exports.addToy =
 exports.getToy =
   async (req, res) => {
     try {
-      console.log(req.body.uid)
+      console.log(req.body._id)
       const toy = await Toy.findById({ _id: req.body._id });
       console.log(toy)
-      const token = jwt.sign({ _id: toy._id, role: toy.role }, 'MERNSECRET', { expiresIn: '1h' });
-      res.cookie("token", token, { expiresIn: "1h" });
       res.status(200).json({
-        token,
+        message: "toy details",
         toy: toy,
       });
     } catch (error) {

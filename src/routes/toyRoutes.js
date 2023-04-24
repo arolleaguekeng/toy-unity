@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 
-router.post('/toy/get',  getToy);
+router.get('/toy/get',  getToy);
 router.post('/toy/add', addToy); 
 
 

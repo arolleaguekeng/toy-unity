@@ -15,12 +15,12 @@ const messageSchema = new mongoose.Schema({
 });
 
 
-
 const userSchema = new mongoose.Schema({
+    uid: { type: String, required: true, unique: true },
     fullName: { type: String, required: true },
     username: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
-    hash_password: { type: String, required: true },
+    hash_password: { type: String },
     phone: { type: String },
     role: { type: String, enum: ['user', 'admin'], default: 'user' },
     image: { type: String },

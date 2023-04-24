@@ -1,11 +1,11 @@
 const express = require('express');
-const { getToy, addToy } = require('../controllers/toyController');
+const { getOperation, addOperation } = require('../controllers/operationController');
 const router = express.Router();
 
 
 
-router.post('/toy/get',  getToy);
-router.post('/toy/add', addToy); 
+router.post('/operation/get',  getOperation);
+router.post('/operation/add', addOperation); 
 
 
 

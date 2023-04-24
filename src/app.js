@@ -6,6 +6,7 @@ const app = express();
 const cors = require('cors')
 const userRoutes = require('./routes/auth')
 const toyRoutes = require('./routes/toyRoutes')
+const operationRoutes = require('./routes/operationRoutes')
 
 /*--------- MONGODB CONNECTION ---------*/
 db.connectDb()
@@ -17,6 +18,7 @@ app.use(cors({
 }));
 app.use('/api', userRoutes);
 app.use('/api', toyRoutes);
+app.use('/api', operationRoutes);
 
 app.listen(port, () => {
     console.log(`our application is running at port ${port}`)

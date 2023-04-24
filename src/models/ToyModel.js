@@ -15,4 +15,4 @@ const toySchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
-module.exports = mongoose.model('Toy', userSchema);
+module.exports = mongoose.model('Toy', toySchema);

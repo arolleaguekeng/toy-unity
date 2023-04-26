@@ -23,7 +23,6 @@ exports.addOperation =
         console.log(error);
         res.status(400).json({ message: 'User do not exist' , error : error});
       }
-
       const {
         idProprietaire,
         idAcheteur,
@@ -46,6 +45,7 @@ exports.addOperation =
         message: 'Operation created successfully',
         operation: savedOperation
       });
+      print('Operation created successfully');
 
     } catch (error) {
       console.log(error);
@@ -65,8 +65,34 @@ exports.getOperation =
         message: "operation details",
         operation: operation,
       });
+      print('Operation get by id successfully');
+      print(operation)
     } catch (error) {
       console.log(error);
       res.status(500).json({ message: 'Internal server error' });
     }
   };
+
+
+  exports.editOperation = async (req, res) => {
+    try {
+        const operation = await Operation.updateOne({_id:req.params.id}, req.body)
+        res.json({ data: operation})
+    } catch (err) {
+        res.status(500).json({ error: err.message })
+    }
+}
+
+exports.getOperations = async (req, res) => {
+  try {
+      const operation = await Operation.find()
+      res.status(200).json({
+        message: "List of Operations", 
+        operation: operation,
+      });
+      print('Operation get all successfully');
+  } catch (err) { 
+      res.status(500).json({ error: err.message }) 
+  }
+}
+ 

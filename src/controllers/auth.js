@@ -37,9 +37,6 @@ exports.signup =
         country
       });
       const savedUser = await user.save();
-      res.header("Access-Control-Allow-Origin", "*");
-      res.header("Access-Control-Allow-Methods", "GET,PUT,PATCH,POST,DELETE");
-      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
       res.status(201).json({
         message: 'User created successfully',
         user: savedUser

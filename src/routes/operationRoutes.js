@@ -1,12 +1,14 @@
 const express = require('express');
-const { getOperation, addOperation } = require('../controllers/operationController');
+const { getOperation, addOperation, editOperation, getOperations } = require('../controllers/operationController');
 const router = express.Router();
 
 
 
 router.get('/operation/get',  getOperation);
 router.post('/operation/add', addOperation); 
+router.put('/operation/edit/:id', editOperation); 
+router.get('/operation/get-all', getOperations); 
 
 
 
-module.exports = router
+module.exports = router 

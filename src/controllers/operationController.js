@@ -77,7 +77,8 @@ exports.getOperation =
   exports.editOperation = async (req, res) => {
     try {
         const operation = await Operation.updateOne({_id:req.params.id}, req.body)
-        res.json({ data: operation})
+        const newOperation = await Operation.findById({ _id: req.params.id });
+        res.json({ operation: newOperation})
     } catch (err) {
         res.status(500).json({ error: err.message })
     }

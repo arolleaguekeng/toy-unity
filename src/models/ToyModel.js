@@ -4,6 +4,7 @@ const { ObjectId } = mongoose.Schema;
 
 const toySchema = new mongoose.Schema({
     name: { type: String, required: true },
+    uid: { type: String, required: true },
     description: { type: String, required: true, unique: true },
     color: { type: String, required: true, unique: true },
     price: { type: String, required: true, unique: true },

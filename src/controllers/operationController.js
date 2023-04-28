@@ -84,16 +84,18 @@ exports.getOperation =
     }
 }
 
-exports.getOperations = async (req, res) => {
+
+exports.getUserOperations = async (req, res) => {
   try {
-      const operation = await Operation.find()
+      const operations = await Operation.find({ jouetProp: req.body.jouetProp, jouetacht: req.body.jouetacht  })
       res.status(200).json({
-        message: "List of Operations", 
-        operation: operation,
+        message: "List of User Operations", 
+        operations: operations,
       });
       print('Operation get all successfully');
   } catch (err) { 
       res.status(500).json({ error: err.message }) 
   }
 }
- 
+
+

@@ -10,6 +10,7 @@ exports.addToy =
       console.log(req.body);
       const {
         name,
+        uid,
         description,
         color,
         email,
@@ -20,6 +21,7 @@ exports.addToy =
       } = req.body;
       const toy = new Toy({
         name,
+        uid,
         description,
         color,
         email,
@@ -49,6 +51,39 @@ exports.getToy =
       res.status(200).json({
         message: "toy details",
         toy: toy,
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  };
+
+
+  exports.getToyByUserId =
+  async (req, res) => {
+    try {
+      console.log(req.body.uid)
+      const toys = await Toy.find({ uid: req.body.uid });
+      console.log(toy)
+      res.status(200).json({
+        message: "User toys list",
+        toys: toys,
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  };
+
+  exports.getAllToys =
+  async (req, res) => {
+    try {
+      console.log(req.body.uid)
+      const toys = await Toy.find();
+      console.log(toys)
+      res.status(200).json({
+        message: "Toys list",
+        toys: toys,
       });
     } catch (error) {
       console.log(error);

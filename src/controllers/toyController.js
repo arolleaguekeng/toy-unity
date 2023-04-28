@@ -42,7 +42,7 @@ exports.addToy =
   };
 
 
-exports.getToy =
+exports.getOneToy =
   async (req, res) => {
     try {
       console.log(req.body._id)
@@ -59,7 +59,7 @@ exports.getToy =
   };
 
 
-  exports.getToyByUserId =
+exports.getToyByUserId =
   async (req, res) => {
     try {
       console.log(req.body.uid)
@@ -75,7 +75,8 @@ exports.getToy =
     }
   };
 
-  exports.getAllToys =
+  
+exports.getAllToys =
   async (req, res) => {
     try {
       console.log(req.body.uid)
@@ -90,3 +91,25 @@ exports.getToy =
       res.status(500).json({ message: 'Internal server error' });
     }
   };
+
+
+exports.editToy = async (req, res) => {
+  try {
+    const toy = await Toy.updateOne({ _id: req.params.id }, req.body)
+    const newToy = await Toy.findById({ _id: req.params.id });
+    res.json({ message: "Toy Update Successfull", toy: newToy })
+  } catch (err) {
+    res.status(500).json({ error: err.message })
+  }
+}
+
+
+
+exports.deleteToy = async (req, res) => {
+  try {
+    const toy = await Toy.findOneAndDelete({ _id: req.params.id });
+    res.json({ message: "Toy Delete Successfull", toy: toy })
+  } catch (err) {
+    res.status(500).json({ error: err.message })
+  }
+}

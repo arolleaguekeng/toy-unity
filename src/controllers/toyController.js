@@ -32,7 +32,7 @@ exports.addToy =
       });
       const savedToy = await toy.save();
       res.status(201).json({
-        message: 'Toy created successfully',
+        message: 'Toy created successfully', 
         toy: savedToy
       });
     } catch (error) {
@@ -65,10 +65,7 @@ exports.getToyByUserId =
       console.log(req.body.uid)
       const toys = await Toy.find({ uid: req.body.uid });
       console.log(toy)
-      res.status(200).json({
-        message: "User toys list",
-        toys: toys,
-      });
+      res.status(200).json(toys);
     } catch (error) {
       console.log(error);
       res.status(500).json({ message: 'Internal server error' });
@@ -82,10 +79,20 @@ exports.getAllToys =
       console.log(req.body.uid)
       const toys = await Toy.find();
       console.log(toys)
-      res.status(200).json({
-        message: "Toys list",
-        toys: toys,
-      });
+      res.status(200).json(toys);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  };
+
+  exports.getMostPopularToys =
+  async (req, res) => {
+    try {
+      console.log(req.body.uid)
+      const toys = await Toy.find().sort({rate: 'asc'});
+      console.log(toys)
+      res.status(200).json(toys);
     } catch (error) {
       console.log(error);
       res.status(500).json({ message: 'Internal server error' });

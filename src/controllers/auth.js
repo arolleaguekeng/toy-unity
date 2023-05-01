@@ -51,15 +51,13 @@ exports.signup =
 exports.login =
   async (req, res) => {
     try {
-      console.log(req.body.uid)
-      const user = await User.find({ uid: req.body.uid });
+      console.log(req.params.uid)
+      const user = await User.findOne({ uid: req.params.uid });
       console.log(user)
       const token = jwt.sign({ _id: user._id, role: user.role }, 'MERNSECRET', { expiresIn: '1h' });
       res.cookie("token", token, { expiresIn: "1h" });
-      res.status(200).json({
-        token,
-        user: user,
-      });
+      console.log(token)
+      res.status(200).json(user);
     } catch (error) {
       console.log(error);
       res.status(500).json({ message: 'Internal server error' });

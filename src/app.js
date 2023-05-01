@@ -16,6 +16,7 @@ app.use(cors({
     origin: "*",
     methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
 }));
+app.use('/', "Welcome to Toy Unity Api");
 app.use('/api', userRoutes);
 app.use('/api', toyRoutes);
 app.use('/api', operationRoutes);

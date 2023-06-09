@@ -1,4 +1,7 @@
-[/aur/license/:packageName](https://img.shields.io/bower/l/t)
+https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E
+https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white
+[[/aur/license/:packageName](https://img.shields.io/bower/l/t)](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+
 # Toy Unity
 
 Nom du projet est une application de vente de jouets pour enfants développée avec Node.js et le framework Express.js. Cette application permet aux utilisateurs de parcourir une sélection de jouets pour enfants, de les ajouter à leur panier et de passer une commande.
